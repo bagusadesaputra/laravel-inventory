@@ -12,7 +12,7 @@ test('registration screen can be rendered', function () {
     $response->assertOk();
 });
 
-test('new users can register', function () {
+test('new users are created and sent to the login screen', function () {
     $response = $this->post(route('register.store'), [
         'name' => 'Test User',
         'email' => 'test@example.com',
@@ -20,6 +20,18 @@ test('new users can register', function () {
         'password_confirmation' => 'password',
     ]);
 
-    $this->assertAuthenticated();
-    $response->assertRedirect(route('dashboard', absolute: false));
+    $this->assertGuest();
+    $response->assertRedirect(route('login', absolute: false));
+
+    $this->assertDatabaseHas('users', [
+        'email' => 'test@example.com',
+        'role' => 'staff',
+    ]);
+
+    $this->get(route('login'))
+        ->assertOk()
+        ->assertInertia(fn ($page) => $page
+            ->component('auth/login')
+            ->where('status', 'Your account has been created. Please log in.'),
+        );
 });
