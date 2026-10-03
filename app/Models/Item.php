@@ -90,7 +90,7 @@ class Item extends Model
 
             if ($stockAfter < 0) {
                 throw ValidationException::withMessages([
-                    'quantity' => "Insufficient stock: {$locked->stock} {$locked->unit->value} available.",
+                    'quantity' => "Stok tidak mencukupi: tersedia {$locked->stock} {$locked->unit->value}.",
                 ]);
             }
 
