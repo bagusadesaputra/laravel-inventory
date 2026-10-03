@@ -25,7 +25,7 @@ class StockMovementController extends Controller
             $validated['note'] ?? null,
         );
 
-        Inertia::flash('toast', ['type' => 'success', 'message' => 'Stock movement recorded.']);
+        Inertia::flash('toast', ['type' => 'success', 'message' => 'Pergerakan stok berhasil dicatat.']);
 
         return redirect()->route('inventory.items.show', $item);
     }

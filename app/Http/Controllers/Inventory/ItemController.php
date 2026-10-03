@@ -78,10 +78,10 @@ class ItemController extends Controller
         $item = Item::create($validated);
 
         if ($initialStock > 0) {
-            $item->recordMovement(StockMovementType::In, $initialStock, $request->user(), 'Initial stock.');
+            $item->recordMovement(StockMovementType::In, $initialStock, $request->user(), 'Stok awal.');
         }
 
-        Inertia::flash('toast', ['type' => 'success', 'message' => 'Item created.']);
+        Inertia::flash('toast', ['type' => 'success', 'message' => 'Barang berhasil dibuat.']);
 
         return redirect()->route('inventory.items.show', $item);
     }
@@ -105,7 +105,7 @@ class ItemController extends Controller
     {
         $item->update($request->validated());
 
-        Inertia::flash('toast', ['type' => 'success', 'message' => 'Item updated.']);
+        Inertia::flash('toast', ['type' => 'success', 'message' => 'Barang berhasil diperbarui.']);
 
         return redirect()->route('inventory.items.show', $item);
     }
@@ -118,7 +118,7 @@ class ItemController extends Controller
         if ($item->movements()->exists()) {
             Inertia::flash('toast', [
                 'type' => 'error',
-                'message' => 'This item has a stock history and cannot be deleted.',
+                'message' => 'Barang ini memiliki riwayat stok dan tidak dapat dihapus.',
             ]);
 
             return back();
@@ -126,7 +126,7 @@ class ItemController extends Controller
 
         $item->delete();
 
-        Inertia::flash('toast', ['type' => 'success', 'message' => 'Item deleted.']);
+        Inertia::flash('toast', ['type' => 'success', 'message' => 'Barang berhasil dihapus.']);
 
         return redirect()->route('inventory.items.index');
     }

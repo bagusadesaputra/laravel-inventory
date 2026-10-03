@@ -25,12 +25,12 @@ const mainNavItems: NavItem[] = [
         icon: LayoutGrid,
     },
     {
-        title: 'Items',
+        title: 'Barang',
         href: ItemController.index.url(),
         icon: Package,
     },
     {
-        title: 'Categories',
+        title: 'Kategori',
         href: CategoryController.index.url(),
         icon: Tags,
     },
@@ -38,12 +38,12 @@ const mainNavItems: NavItem[] = [
 
 const footerNavItems: NavItem[] = [
     {
-        title: 'Repository',
+        title: 'Repositori',
         href: 'https://github.com/laravel/react-starter-kit',
         icon: FolderGit2,
     },
     {
-        title: 'Documentation',
+        title: 'Dokumentasi',
         href: 'https://laravel.com/docs/starter-kits#react',
         icon: BookOpen,
     },

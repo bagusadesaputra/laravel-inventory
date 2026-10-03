@@ -29,6 +29,6 @@ class RegisterResponse implements RegisterResponseContract
 
         return $request->wantsJson()
             ? new JsonResponse('', 201)
-            : redirect()->route('login')->with('status', 'Your account has been created. Please log in.');
+            : redirect()->route('login')->with('status', 'Akun Anda berhasil dibuat. Silakan masuk.');
     }
 }

@@ -10,7 +10,7 @@ export default function Pagination<T>({ page }: { page: Paginated<T> }) {
     return (
         <div className="flex flex-wrap items-center justify-between gap-3">
             <p className="text-sm text-muted-foreground">
-                {page.total} record(s)
+                {page.total} catatan
             </p>
 
             <div className="flex items-center gap-2">
@@ -22,11 +22,11 @@ export default function Pagination<T>({ page }: { page: Paginated<T> }) {
                         page.prev_page_url && router.get(page.prev_page_url)
                     }
                 >
-                    Previous
+                    Sebelumnya
                 </Button>
 
                 <span className="text-sm text-muted-foreground">
-                    Page {page.current_page} of {page.last_page}
+                    Halaman {page.current_page} dari {page.last_page}
                 </span>
 
                 <Button
@@ -37,7 +37,7 @@ export default function Pagination<T>({ page }: { page: Paginated<T> }) {
                         page.next_page_url && router.get(page.next_page_url)
                     }
                 >
-                    Next
+                    Berikutnya
                 </Button>
             </div>
         </div>

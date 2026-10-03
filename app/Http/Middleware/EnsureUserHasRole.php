@@ -21,7 +21,7 @@ class EnsureUserHasRole
         abort_unless(
             $role !== null && in_array($role, $roles, true),
             403,
-            'Your role does not allow this action.',
+            'Peran Anda tidak mengizinkan tindakan ini.',
         );
 
         return $next($request);

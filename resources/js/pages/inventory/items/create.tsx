@@ -14,13 +14,13 @@ export default function CreateItem() {
 
     return (
         <>
-            <Head title="New item" />
+            <Head title="Barang baru" />
 
             <div className="space-y-6 px-4 py-6">
                 <Heading
                     variant="small"
-                    title="New item"
-                    description="Add an item to the inventory catalogue"
+                    title="Barang baru"
+                    description="Tambahkan barang ke katalog inventori"
                 />
 
                 <ItemForm categories={categories} units={units} />
@@ -32,11 +32,11 @@ export default function CreateItem() {
 CreateItem.layout = {
     breadcrumbs: [
         {
-            title: 'Items',
+            title: 'Barang',
             href: ItemController.index.url(),
         },
         {
-            title: 'New item',
+            title: 'Barang baru',
             href: ItemController.create.url(),
         },
     ],

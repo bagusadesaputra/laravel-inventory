@@ -29,7 +29,7 @@ class CategoryController extends Controller
     {
         Category::create($request->validated());
 
-        Inertia::flash('toast', ['type' => 'success', 'message' => 'Category created.']);
+        Inertia::flash('toast', ['type' => 'success', 'message' => 'Kategori berhasil dibuat.']);
 
         return redirect()->route('inventory.categories.index');
     }
@@ -41,7 +41,7 @@ class CategoryController extends Controller
     {
         $category->update($request->validated());
 
-        Inertia::flash('toast', ['type' => 'success', 'message' => 'Category updated.']);
+        Inertia::flash('toast', ['type' => 'success', 'message' => 'Kategori berhasil diperbarui.']);
 
         return back();
     }
@@ -54,7 +54,7 @@ class CategoryController extends Controller
         if ($category->items()->exists()) {
             Inertia::flash('toast', [
                 'type' => 'error',
-                'message' => 'This category still has items. Move or delete them first.',
+                'message' => 'Kategori ini masih memiliki barang. Pindahkan atau hapus barangnya terlebih dahulu.',
             ]);
 
             return back();
@@ -62,7 +62,7 @@ class CategoryController extends Controller
 
         $category->delete();
 
-        Inertia::flash('toast', ['type' => 'success', 'message' => 'Category deleted.']);
+        Inertia::flash('toast', ['type' => 'success', 'message' => 'Kategori berhasil dihapus.']);
 
         return back();
     }

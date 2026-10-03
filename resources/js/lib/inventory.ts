@@ -21,7 +21,7 @@ export function isLowStock(item: {
  * Laravel writes timestamps as "Y-m-d H:i:s", which Safari will not parse.
  */
 export function formatDateTime(value: string): string {
-    return new Date(value.replace(' ', 'T')).toLocaleString();
+    return new Date(value.replace(' ', 'T')).toLocaleString('id-ID');
 }
 
 /**

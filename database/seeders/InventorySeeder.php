@@ -30,7 +30,7 @@ class InventorySeeder extends Seeder
                                 StockMovementType::In,
                                 fake()->numberBetween(10, 120),
                                 $owner,
-                                'Seeded opening stock.',
+                                'Stok awal.',
                             );
                         }
                     });

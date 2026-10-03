@@ -36,7 +36,7 @@ export default function ItemShow() {
     const confirmDelete = () => {
         if (
             window.confirm(
-                `Delete "${item.name}"? This is only possible while it has no stock history.`,
+                `Hapus "${item.name}"? Ini hanya bisa dilakukan selama barang belum memiliki riwayat stok.`,
             )
         ) {
             router.delete(ItemController.destroy.url(item.id), {
@@ -58,7 +58,7 @@ export default function ItemShow() {
                         <p className="text-sm text-muted-foreground">
                             <span className="font-mono">{item.sku}</span>
                             {' · '}
-                            {item.category?.name ?? 'Uncategorised'}
+                            {item.category?.name ?? 'Tanpa kategori'}
                         </p>
                     </div>
 
@@ -66,14 +66,14 @@ export default function ItemShow() {
                         <div className="flex gap-2">
                             <Button variant="outline" asChild>
                                 <Link href={ItemController.edit.url(item.id)}>
-                                    Edit
+                                    Ubah
                                 </Link>
                             </Button>
                             <Button
                                 variant="destructive"
                                 onClick={confirmDelete}
                             >
-                                Delete
+                                Hapus
                             </Button>
                         </div>
                     )}
@@ -82,7 +82,7 @@ export default function ItemShow() {
                 <div className="grid gap-4 md:grid-cols-3">
                     <Card>
                         <CardHeader className="pb-2">
-                            <CardDescription>Current stock</CardDescription>
+                            <CardDescription>Stok saat ini</CardDescription>
                             <CardTitle className="text-3xl">
                                 {item.stock}{' '}
                                 <span className="text-base font-medium text-muted-foreground uppercase">
@@ -94,7 +94,7 @@ export default function ItemShow() {
 
                     <Card>
                         <CardHeader className="pb-2">
-                            <CardDescription>Reorder level</CardDescription>
+                            <CardDescription>Stok minimum</CardDescription>
                             <CardTitle className="text-3xl">
                                 {item.reorder_level}
                             </CardTitle>
@@ -112,7 +112,7 @@ export default function ItemShow() {
                                             : 'outline'
                                     }
                                 >
-                                    {isLowStock(item) ? 'Low stock' : 'Healthy'}
+                                    {isLowStock(item) ? 'Stok menipis' : 'Aman'}
                                 </Badge>
                             </CardTitle>
                         </CardHeader>
@@ -121,10 +121,10 @@ export default function ItemShow() {
 
                 <Card>
                     <CardHeader>
-                        <CardTitle>Record stock movement</CardTitle>
+                        <CardTitle>Catat pergerakan stok</CardTitle>
                         <CardDescription>
-                            Every change is written to the stock ledger with
-                            your name against it.
+                            Setiap perubahan dicatat pada buku stok dengan nama
+                            Anda.
                         </CardDescription>
                     </CardHeader>
 
@@ -137,24 +137,24 @@ export default function ItemShow() {
                             {({ processing, errors }) => (
                                 <>
                                     <div className="grid gap-2">
-                                        <Label htmlFor="type">Type</Label>
+                                        <Label htmlFor="type">Jenis</Label>
                                         <NativeSelect
                                             id="type"
                                             name="type"
                                             defaultValue="in"
                                         >
-                                            <option value="in">Stock in</option>
+                                            <option value="in">
+                                                Stok Masuk
+                                            </option>
                                             <option value="out">
-                                                Stock out
+                                                Stok Keluar
                                             </option>
                                         </NativeSelect>
                                         <InputError message={errors.type} />
                                     </div>
 
                                     <div className="grid gap-2">
-                                        <Label htmlFor="quantity">
-                                            Quantity
-                                        </Label>
+                                        <Label htmlFor="quantity">Jumlah</Label>
                                         <Input
                                             id="quantity"
                                             name="quantity"
@@ -167,12 +167,12 @@ export default function ItemShow() {
                                     </div>
 
                                     <div className="grid gap-2">
-                                        <Label htmlFor="note">Note</Label>
+                                        <Label htmlFor="note">Catatan</Label>
                                         <Input
                                             id="note"
                                             name="note"
                                             maxLength={255}
-                                            placeholder="Optional"
+                                            placeholder="Opsional"
                                         />
                                         <InputError message={errors.note} />
                                     </div>
@@ -182,7 +182,7 @@ export default function ItemShow() {
                                             disabled={processing}
                                             className="w-full"
                                         >
-                                            Record
+                                            Catat
                                         </Button>
                                     </div>
                                 </>
@@ -193,9 +193,9 @@ export default function ItemShow() {
 
                 <Card>
                     <CardHeader>
-                        <CardTitle>Stock ledger</CardTitle>
+                        <CardTitle>Buku stok</CardTitle>
                         <CardDescription>
-                            Chronological record of every stock change
+                            Catatan kronologis setiap perubahan stok
                         </CardDescription>
                     </CardHeader>
 
@@ -205,22 +205,22 @@ export default function ItemShow() {
                                 <thead>
                                     <tr className="border-b bg-muted/50 text-left">
                                         <th className="px-4 py-2 font-medium">
-                                            When
+                                            Kapan
                                         </th>
                                         <th className="px-4 py-2 font-medium">
-                                            Type
+                                            Jenis
                                         </th>
                                         <th className="px-4 py-2 text-right font-medium">
-                                            Qty
+                                            Jumlah
                                         </th>
                                         <th className="px-4 py-2 text-right font-medium">
-                                            Stock after
+                                            Stok setelah
                                         </th>
                                         <th className="px-4 py-2 font-medium">
-                                            Note
+                                            Catatan
                                         </th>
                                         <th className="px-4 py-2 font-medium">
-                                            Recorded by
+                                            Dicatat oleh
                                         </th>
                                     </tr>
                                 </thead>
@@ -232,7 +232,8 @@ export default function ItemShow() {
                                                 colSpan={6}
                                                 className="px-4 py-8 text-center text-muted-foreground"
                                             >
-                                                No movements recorded yet.
+                                                Belum ada pergerakan yang
+                                                dicatat.
                                             </td>
                                         </tr>
                                     )}
@@ -256,8 +257,8 @@ export default function ItemShow() {
                                                     }
                                                 >
                                                     {movement.type === 'out'
-                                                        ? 'Stock out'
-                                                        : 'Stock in'}
+                                                        ? 'Stok Keluar'
+                                                        : 'Stok Masuk'}
                                                 </Badge>
                                             </td>
                                             <td className="px-4 py-2 text-right">
@@ -289,11 +290,11 @@ export default function ItemShow() {
 ItemShow.layout = {
     breadcrumbs: [
         {
-            title: 'Items',
+            title: 'Barang',
             href: ItemController.index.url(),
         },
         {
-            title: 'Item detail',
+            title: 'Detail barang',
             href: ItemController.show.url(1),
         },
     ],

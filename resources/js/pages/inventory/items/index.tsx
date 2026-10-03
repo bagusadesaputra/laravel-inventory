@@ -29,20 +29,20 @@ export default function ItemsIndex() {
 
     return (
         <>
-            <Head title="Items" />
+            <Head title="Barang" />
 
             <div className="space-y-6 px-4 py-6">
                 <div className="flex flex-wrap items-start justify-between gap-4">
                     <Heading
                         variant="small"
-                        title="Items"
-                        description="Everything the business keeps in stock"
+                        title="Barang"
+                        description="Semua barang yang disimpan bisnis"
                     />
 
                     {canManage(auth.user) && (
                         <Button asChild>
                             <Link href={ItemController.create.url()}>
-                                New item
+                                Barang baru
                             </Link>
                         </Button>
                     )}
@@ -55,23 +55,23 @@ export default function ItemsIndex() {
                     {({ processing }) => (
                         <>
                             <div className="grid min-w-56 flex-1 gap-2">
-                                <Label htmlFor="search">Search</Label>
+                                <Label htmlFor="search">Cari</Label>
                                 <Input
                                     id="search"
                                     name="search"
                                     defaultValue={filters.search ?? ''}
-                                    placeholder="Name or SKU"
+                                    placeholder="Nama atau SKU"
                                 />
                             </div>
 
                             <div className="grid w-56 gap-2">
-                                <Label htmlFor="category">Category</Label>
+                                <Label htmlFor="category">Kategori</Label>
                                 <NativeSelect
                                     id="category"
                                     name="category"
                                     defaultValue={filters.category ?? ''}
                                 >
-                                    <option value="">All categories</option>
+                                    <option value="">Semua kategori</option>
                                     {categories.map((category) => (
                                         <option
                                             key={category.id}
@@ -109,13 +109,15 @@ export default function ItemsIndex() {
                         <thead>
                             <tr className="border-b bg-muted/50 text-left">
                                 <th className="px-4 py-2 font-medium">SKU</th>
-                                <th className="px-4 py-2 font-medium">Name</th>
+                                <th className="px-4 py-2 font-medium">Nama</th>
                                 <th className="px-4 py-2 font-medium">
-                                    Category
+                                    Kategori
                                 </th>
-                                <th className="px-4 py-2 font-medium">Unit</th>
+                                <th className="px-4 py-2 font-medium">
+                                    Satuan
+                                </th>
                                 <th className="px-4 py-2 text-right font-medium">
-                                    Stock
+                                    Stok
                                 </th>
                                 <th className="px-4 py-2 font-medium">
                                     Status
@@ -130,7 +132,7 @@ export default function ItemsIndex() {
                                         colSpan={6}
                                         className="px-4 py-8 text-center text-muted-foreground"
                                     >
-                                        No items match these filters.
+                                        Barang tidak ditemukan.
                                     </td>
                                 </tr>
                             )}
@@ -170,7 +172,9 @@ export default function ItemsIndex() {
                                                     : 'outline'
                                             }
                                         >
-                                            {isLowStock(item) ? 'Low' : 'OK'}
+                                            {isLowStock(item)
+                                                ? 'Menipis'
+                                                : 'OK'}
                                         </Badge>
                                     </td>
                                 </tr>
@@ -192,7 +196,7 @@ ItemsIndex.layout = {
             href: dashboard(),
         },
         {
-            title: 'Items',
+            title: 'Barang',
             href: ItemController.index.url(),
         },
     ],

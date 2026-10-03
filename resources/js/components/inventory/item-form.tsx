@@ -38,20 +38,20 @@ export default function ItemForm({ categories, units, item }: Props) {
                     </div>
 
                     <div className="grid gap-2">
-                        <Label htmlFor="name">Item name</Label>
+                        <Label htmlFor="name">Nama barang</Label>
                         <Input
                             id="name"
                             name="name"
                             defaultValue={item?.name}
                             required
                             maxLength={255}
-                            placeholder="Item name"
+                            placeholder="Nama barang"
                         />
                         <InputError className="mt-2" message={errors.name} />
                     </div>
 
                     <div className="grid gap-2">
-                        <Label htmlFor="category_id">Category</Label>
+                        <Label htmlFor="category_id">Kategori</Label>
                         <NativeSelect
                             id="category_id"
                             name="category_id"
@@ -59,7 +59,7 @@ export default function ItemForm({ categories, units, item }: Props) {
                             required
                         >
                             <option value="" disabled>
-                                Select a category
+                                Pilih kategori
                             </option>
                             {categories.map((category) => (
                                 <option key={category.id} value={category.id}>
@@ -74,7 +74,7 @@ export default function ItemForm({ categories, units, item }: Props) {
                     </div>
 
                     <div className="grid gap-2">
-                        <Label htmlFor="unit">Unit</Label>
+                        <Label htmlFor="unit">Satuan</Label>
                         <NativeSelect
                             id="unit"
                             name="unit"
@@ -83,7 +83,8 @@ export default function ItemForm({ categories, units, item }: Props) {
                         >
                             {units.map((unit) => (
                                 <option key={unit} value={unit}>
-                                    {unit.toUpperCase()}
+                                    {unit.charAt(0).toUpperCase() +
+                                        unit.slice(1)}
                                 </option>
                             ))}
                         </NativeSelect>
@@ -91,7 +92,7 @@ export default function ItemForm({ categories, units, item }: Props) {
                     </div>
 
                     <div className="grid gap-2">
-                        <Label htmlFor="reorder_level">Reorder level</Label>
+                        <Label htmlFor="reorder_level">Stok minimum</Label>
                         <Input
                             id="reorder_level"
                             name="reorder_level"
@@ -101,8 +102,8 @@ export default function ItemForm({ categories, units, item }: Props) {
                             required
                         />
                         <p className="text-sm text-muted-foreground">
-                            Warn when stock falls to this level. Use 0 to turn
-                            the warning off.
+                            Beri peringatan saat stok turun ke level ini.
+                            Gunakan 0 untuk mematikan peringatan.
                         </p>
                         <InputError
                             className="mt-2"
@@ -112,7 +113,7 @@ export default function ItemForm({ categories, units, item }: Props) {
 
                     {!item && (
                         <div className="grid gap-2">
-                            <Label htmlFor="initial_stock">Opening stock</Label>
+                            <Label htmlFor="initial_stock">Stok awal</Label>
                             <Input
                                 id="initial_stock"
                                 name="initial_stock"
@@ -121,7 +122,7 @@ export default function ItemForm({ categories, units, item }: Props) {
                                 defaultValue={0}
                             />
                             <p className="text-sm text-muted-foreground">
-                                Recorded as the first entry in the stock ledger.
+                                Dicatat sebagai entri pertama pada buku stok.
                             </p>
                             <InputError
                                 className="mt-2"
@@ -132,7 +133,7 @@ export default function ItemForm({ categories, units, item }: Props) {
 
                     <div className="flex items-center gap-4">
                         <Button disabled={processing}>
-                            {item ? 'Save changes' : 'Create item'}
+                            {item ? 'Simpan perubahan' : 'Tambah barang'}
                         </Button>
                     </div>
                 </>

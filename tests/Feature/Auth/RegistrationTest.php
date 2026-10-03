@@ -32,6 +32,6 @@ test('new users are created and sent to the login screen', function () {
         ->assertOk()
         ->assertInertia(fn ($page) => $page
             ->component('auth/login')
-            ->where('status', 'Your account has been created. Please log in.'),
+            ->where('status', 'Akun Anda berhasil dibuat. Silakan masuk.'),
         );
 });

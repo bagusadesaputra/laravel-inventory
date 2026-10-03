@@ -15,13 +15,13 @@ export default function EditItem() {
 
     return (
         <>
-            <Head title={`Edit ${item.name}`} />
+            <Head title={`Ubah ${item.name}`} />
 
             <div className="space-y-6 px-4 py-6">
                 <Heading
                     variant="small"
-                    title="Edit item"
-                    description="Stock is not editable here; record it as a movement instead"
+                    title="Ubah barang"
+                    description="Stok tidak dapat diubah di sini; catat sebagai pergerakan stok"
                 />
 
                 <ItemForm item={item} categories={categories} units={units} />
@@ -33,11 +33,11 @@ export default function EditItem() {
 EditItem.layout = {
     breadcrumbs: [
         {
-            title: 'Items',
+            title: 'Barang',
             href: ItemController.index.url(),
         },
         {
-            title: 'Edit item',
+            title: 'Ubah barang',
             href: ItemController.edit.url(1),
         },
     ],

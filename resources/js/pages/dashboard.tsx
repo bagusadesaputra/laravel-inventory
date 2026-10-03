@@ -27,19 +27,19 @@ export default function Dashboard({
 }) {
     const cards = [
         {
-            title: 'Items in catalogue',
+            title: 'Barang dalam katalog',
             value: stats.totalItems,
-            description: 'Distinct items tracked',
+            description: 'Jumlah barang yang dilacak',
         },
         {
-            title: 'Low stock',
+            title: 'Stok menipis',
             value: stats.lowStock,
-            description: 'At or below the reorder level',
+            description: 'Stok sudah mencapai atau di bawah stok minimum',
         },
         {
-            title: 'Movements today',
+            title: 'Pergerakan hari ini',
             value: stats.movementsToday,
-            description: 'Stock in and stock out recorded',
+            description: 'Stok masuk dan stok keluar yang dicatat',
         },
     ];
 
@@ -66,10 +66,10 @@ export default function Dashboard({
 
                 <Card>
                     <CardHeader>
-                        <CardTitle>Recent stock movements</CardTitle>
+                        <CardTitle>Pergerakan stok terbaru</CardTitle>
                         <CardDescription>
-                            The last 15 stock in and stock out entries across
-                            every item
+                            15 entri terakhir stok masuk dan stok keluar dari
+                            seluruh barang
                         </CardDescription>
                     </CardHeader>
 
@@ -79,22 +79,22 @@ export default function Dashboard({
                                 <thead>
                                     <tr className="border-b bg-muted/50 text-left">
                                         <th className="px-4 py-2 font-medium">
-                                            When
+                                            Kapan
                                         </th>
                                         <th className="px-4 py-2 font-medium">
-                                            Item
+                                            Barang
                                         </th>
                                         <th className="px-4 py-2 font-medium">
-                                            Type
+                                            Jenis
                                         </th>
                                         <th className="px-4 py-2 text-right font-medium">
-                                            Qty
+                                            Jumlah
                                         </th>
                                         <th className="px-4 py-2 text-right font-medium">
-                                            Stock after
+                                            Stok setelah
                                         </th>
                                         <th className="px-4 py-2 font-medium">
-                                            Recorded by
+                                            Dicatat oleh
                                         </th>
                                     </tr>
                                 </thead>
@@ -106,7 +106,8 @@ export default function Dashboard({
                                                 colSpan={6}
                                                 className="px-4 py-8 text-center text-muted-foreground"
                                             >
-                                                No stock movements recorded yet.
+                                                Belum ada pergerakan stok yang
+                                                dicatat.
                                             </td>
                                         </tr>
                                     )}
@@ -140,8 +141,8 @@ export default function Dashboard({
                                                     }
                                                 >
                                                     {movement.type === 'out'
-                                                        ? 'Stock out'
-                                                        : 'Stock in'}
+                                                        ? 'Stok Keluar'
+                                                        : 'Stok Masuk'}
                                                 </Badge>
                                             </td>
                                             <td className="px-4 py-2 text-right">

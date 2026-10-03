@@ -23,7 +23,7 @@ export default function CategoriesIndex() {
     const confirmDelete = (category: Category) => {
         if (
             window.confirm(
-                `Delete the category "${category.name}"? This cannot be undone.`,
+                `Hapus kategori "${category.name}"? Tindakan ini tidak dapat dibatalkan.`,
             )
         ) {
             router.delete(CategoryController.destroy.url(category.id), {
@@ -34,13 +34,13 @@ export default function CategoriesIndex() {
 
     return (
         <>
-            <Head title="Categories" />
+            <Head title="Kategori" />
 
             <div className="space-y-6 px-4 py-6">
                 <Heading
                     variant="small"
-                    title="Categories"
-                    description="Group items so the catalogue stays readable"
+                    title="Kategori"
+                    description="Kelompokkan barang agar katalog tetap rapi"
                 />
 
                 {manage && (
@@ -53,14 +53,14 @@ export default function CategoriesIndex() {
                             <>
                                 <div className="grid flex-1 gap-2">
                                     <Label htmlFor="new-category">
-                                        New category
+                                        Kategori baru
                                     </Label>
                                     <Input
                                         id="new-category"
                                         name="name"
                                         required
                                         maxLength={255}
-                                        placeholder="Category name"
+                                        placeholder="Nama kategori"
                                     />
                                     <InputError
                                         className="mt-2"
@@ -68,7 +68,7 @@ export default function CategoriesIndex() {
                                     />
                                 </div>
 
-                                <Button disabled={processing}>Add</Button>
+                                <Button disabled={processing}>Tambah</Button>
                             </>
                         )}
                     </Form>
@@ -78,13 +78,13 @@ export default function CategoriesIndex() {
                     <table className="w-full text-sm">
                         <thead>
                             <tr className="border-b bg-muted/50 text-left">
-                                <th className="px-4 py-2 font-medium">Name</th>
+                                <th className="px-4 py-2 font-medium">Nama</th>
                                 <th className="px-4 py-2 text-right font-medium">
-                                    Items
+                                    Barang
                                 </th>
                                 {manage && (
                                     <th className="px-4 py-2 text-right font-medium">
-                                        Actions
+                                        Aksi
                                     </th>
                                 )}
                             </tr>
@@ -97,7 +97,7 @@ export default function CategoriesIndex() {
                                         colSpan={manage ? 3 : 2}
                                         className="px-4 py-8 text-center text-muted-foreground"
                                     >
-                                        No categories yet.
+                                        Belum ada kategori.
                                     </td>
                                 </tr>
                             )}
@@ -143,7 +143,7 @@ export default function CategoriesIndex() {
                                                                 processing
                                                             }
                                                         >
-                                                            Save
+                                                            Simpan
                                                         </Button>
                                                         <Button
                                                             size="sm"
@@ -155,7 +155,7 @@ export default function CategoriesIndex() {
                                                                 )
                                                             }
                                                         >
-                                                            Cancel
+                                                            Batal
                                                         </Button>
                                                         <InputError
                                                             message={
@@ -188,7 +188,7 @@ export default function CategoriesIndex() {
                                                                 )
                                                             }
                                                         >
-                                                            Rename
+                                                            Ubah Nama
                                                         </Button>
                                                         <Button
                                                             size="sm"
@@ -199,7 +199,7 @@ export default function CategoriesIndex() {
                                                                 )
                                                             }
                                                         >
-                                                            Delete
+                                                            Hapus
                                                         </Button>
                                                     </div>
                                                 </td>
@@ -223,7 +223,7 @@ CategoriesIndex.layout = {
             href: dashboard(),
         },
         {
-            title: 'Categories',
+            title: 'Kategori',
             href: CategoryController.index.url(),
         },
     ],
